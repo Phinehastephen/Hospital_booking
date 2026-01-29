@@ -1,0 +1,264 @@
+:root {
+    --primary: #0d6efd;
+    --secondary: #6c757d;
+    --success: #198754;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #212529;
+
+    --bg-soft: #f4f6f9;
+    --card-radius: 14px;
+}
+
+body {
+    background-color: var(--bg-soft);
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+    color: #333;
+    padding-top: 10px
+}
+
+h1, h2, h3, h5 {
+    font-weight: 600;
+}
+
+h4{
+    font-weight: 600;
+    padding-top: 40px;
+}
+.btn {
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.btn-sm {
+    border-radius: 8px;
+}
+
+.auth-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e9f2ff, #f8fbff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
+}
+
+.auth-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.auth-card h4 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.auth-card .form-control {
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.auth-card select.form-control {
+    cursor: pointer;
+}
+
+.auth-card .btn-primary {
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 12px;
+}
+
+.auth-card a {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-card a:hover {
+    text-decoration: underline;
+}
+
+.dashboard-card {
+    transition: all 0.25s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+/* ==========================
+   MODERN NAVBAR (FINAL)
+========================== */
+
+.navbar-custom {
+    background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+    padding: 14px 0;
+    box-shadow: 0 10px 30px rgba(13,110,253,0.35);
+    z-index: 1030;
+}
+
+/* Container alignment */
+.navbar-custom .container {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-custom .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff !important;
+    font-weight: 600;
+    font-size: 1.15rem;
+    padding: 0;
+}
+
+.logo-icon {
+    font-size: 1.7rem;
+    line-height: 1;
+}
+
+.logo-text {
+    line-height: 1;
+}
+
+
+.navbar-custom .navbar-nav {
+    align-items: center;
+    gap: 6px;
+}
+
+.navbar-custom .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 12px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link:focus {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff !important;
+}
+
+/* Logout button */
+.navbar-custom .btn-danger {
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+}
+
+/* Toggler */
+.navbar-custom .navbar-toggler {
+    border: none;
+    padding: 4px 6px;
+}
+
+.navbar-custom .navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-custom .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+@media (max-width: 991px) {
+    .navbar-custom .navbar-collapse {
+        margin-top: 12px;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 16px;
+        padding: 12px;
+    }
+
+    .navbar-custom .nav-link {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+.navbar-custom {
+    background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+    padding: 0.7rem 0;
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 8px 30px rgba(13,110,253,0.25);
+}
+
+
+.logo-icon {
+    font-size: 1.6rem;
+}
+
+.logo-text {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+
+.navbar-custom .nav-link {
+    color: rgba(255,255,255,0.9) !important;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.navbar-custom .nav-link:hover {
+    background: rgba(255,255,255,0.15);
+    color: #fff !important;
+}
+
+
+.navbar-custom .btn-danger {
+    border-radius: 20px;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+
+.table {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table th {
+    background-color: #f1f3f5;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.badge {
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.alert {
+    border-radius: 12px;
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 22px;
+    }
+}
