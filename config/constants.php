@@ -1,9 +1,4 @@
 <?php
-/**
- * System-wide constants
- * Used across the application
- */
-
 // ===== USER ROLES =====
 define('ROLE_PATIENT', 'patient');
 define('ROLE_DOCTOR', 'doctor');
@@ -35,4 +30,4 @@ $DAYS_OF_WEEK = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 // ===== APP SETTINGS =====
 define('APP_NAME', 'Marv Hospital Appointment System');
-define('BASE_URL', '/PROJECT STRUCTURE (Marv)'); // change on hosting if needed
+define('BASE_URL', ''); // change on hosting if needed
