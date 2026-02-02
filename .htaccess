@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Redirect root to login if needed
+DirectoryIndex index.php
+
+# Prevent access to sensitive folders
+<DirectoryMatch "^/.*/(config|logic)/">
+    Require all denied
+</DirectoryMatch>

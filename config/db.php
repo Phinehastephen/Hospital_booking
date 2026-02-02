@@ -1,20 +1,11 @@
 <?php
-/**
- * Database connection using PDO
- * Clever Cloud compatible
- */
-
 $host = getenv('MYSQL_ADDON_HOST');
-$dbname = getenv('MYSQL_ADDON_DB');
-$username = getenv('MYSQL_ADDON_USER');
-$password = getenv('MYSQL_ADDON_PASSWORD');
-$port = getenv('MYSQL_ADDON_PORT');
+$db   = getenv('MYSQL_ADDON_DB');
+$user = getenv('MYSQL_ADDON_USER');
+$pass = getenv('MYSQL_ADDON_PASSWORD');
+$port = getenv('MYSQL_ADDON_PORT') ?: 3306;
 
-if (!$host || !$dbname || !$username) {
-    die("Database environment variables not set.");
-}
-
-$dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";
+$dsn = "mysql:host=$host;port=$port;dbname=$db;charset=utf8mb4";
 
 $options = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -23,7 +14,9 @@ $options = [
 ];
 
 try {
-    $pdo = new PDO($dsn, $username, $password, $options);
+    $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (PDOException $e) {
     die("Database connection failed.");
 }
+
+?>
