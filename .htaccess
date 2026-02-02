@@ -1,9 +1,16 @@
 RewriteEngine On
 
-# Redirect root to login if needed
+# Default index file
 DirectoryIndex index.php
 
-# Prevent access to sensitive folders
-<DirectoryMatch "^/.*/(config|logic)/">
-    Require all denied
-</DirectoryMatch>
+# Block direct access to sensitive folders
+RewriteRule ^(config|logic)/ - [F,L]
+
+# Allow existing files and directories
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Route everything else through index.php
+RewriteRule ^ index.php [L]
+

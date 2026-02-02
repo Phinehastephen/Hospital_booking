@@ -22,4 +22,9 @@ COPY . /var/www/html/
 # Permissions
 RUN chown -R www-data:www-data /var/www/html
 
+RUN echo "display_errors=On" >> /usr/local/etc/php/php.ini \
+ && echo "display_startup_errors=On" >> /usr/local/etc/php/php.ini \
+ && echo "error_reporting=E_ALL" >> /usr/local/etc/php/php.ini
+
+
 EXPOSE 8080
