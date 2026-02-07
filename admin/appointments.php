@@ -12,7 +12,6 @@ $stmt = $pdo->prepare("
         a.status,
 
         p.full_name AS patient_name,
-        p.phone AS patient_phone,
 
         d.full_name AS doctor_name,
         d.specialization
@@ -47,7 +46,6 @@ $appointments = $stmt->fetchAll();
             <th>Date</th>
             <th>Time</th>
             <th>Patient</th>
-            <th>Patient Phone</th>
             <th>Doctor</th>
             <th>Specialization</th>
             <th>Status</th>
@@ -70,7 +68,6 @@ $appointments = $stmt->fetchAll();
                     <td><?= htmlspecialchars($a['appointment_date']) ?></td>
                     <td><?= htmlspecialchars($a['appointment_time']) ?></td>
                     <td><?= htmlspecialchars($a['patient_name']) ?></td>
-                    <td><?= htmlspecialchars($a['patient_phone']) ?></td>
                     <td><?= htmlspecialchars($a['doctor_name']) ?></td>
                     <td><?= htmlspecialchars($a['specialization']) ?></td>
                     <td>

@@ -19,10 +19,10 @@ $patientId = $patient['patient_id'];
 // Fetch appointments
 $stmt = $pdo->prepare("
     SELECT 
+        d.full_name AS doctor_name,
         a.appointment_date,
         a.appointment_time,
         a.status,
-        d.full_name AS doctor_name,
         d.specialization
     FROM appointments a
     JOIN doctors d ON a.doctor_id = d.doctor_id
@@ -63,11 +63,11 @@ $appointments = $stmt->fetchAll();
         <?php if ($appointments): ?>
             <?php foreach ($appointments as $a): ?>
                 <tr>
+                    <td><?= htmlspecialchars($a['doctor_name']) ?></td>
                     <td><?= htmlspecialchars($a['appointment_date']) ?></td>
                     <td><?= htmlspecialchars($a['appointment_time']) ?></td>
-                    <td><?= htmlspecialchars($a['doctor_name']) ?></td>
-                    <td><?= htmlspecialchars($a['specialization']) ?></td>
                     <td><?= htmlspecialchars($a['status']) ?></td>
+                    <td><?= htmlspecialchars($a['specialization']) ?></td>
                         <?php
                         $color = match ($a['status']) {
                             APPOINTMENT_PENDING => 'warning',
