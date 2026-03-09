@@ -46,7 +46,7 @@ $nextAppointment = $stmt->fetch();
                     <p class="text-muted small">
                         Schedule a new hospital visit
                     </p>
-                    <a href="<?= BASE_URL ?>/patient/book_appointment.php"
+                    <a href="../patient/book.php"
                        class="btn btn-primary btn-sm">
                         Book Now
                     </a>
@@ -62,7 +62,7 @@ $nextAppointment = $stmt->fetch();
                         <p class="text-muted small">
                             View status & history
                         </p>
-                        <a href="<?= BASE_URL ?>/patient/my_appointments.php"
+                        <a href="../patient/my_appointments.php"
                         class="btn btn-outline-primary btn-sm">
                             View
                         </a>

@@ -3,9 +3,8 @@ require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../config/constants.php';
 require_once __DIR__ . '/../config/session.php';
 
-/**
- * LOGIN FUNCTION
- */
+
+//  * LOGIN FUNCTION
 function loginUser($email, $password) {
     global $pdo;
 
@@ -32,9 +31,8 @@ function loginUser($email, $password) {
     return true;
 }
 
-/**
- * LOGOUT FUNCTION
- */
+
+//  * LOGOUT FUNCTION
 function logoutUser() {
     session_unset();
     session_destroy();

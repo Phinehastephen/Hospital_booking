@@ -7,17 +7,19 @@ requireRole(ROLE_DOCTOR);
 
 // Get doctor ID
 $stmt = $pdo->prepare("
-    SELECT doctor_id 
+    SELECT doctor_id, full_name, specialization, status
     FROM doctors 
     WHERE user_id = :uid
 ");
 $stmt->execute([
     ':uid' => $_SESSION['user_id']
 ]);
-$doctor = $stmt->fetch();
+
+$doctor = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$doctor) {
-    die("Doctor record not found.");
+    echo "Doctor record not found for user_id: " . $_SESSION['user_id'];
+    exit;
 }
 
 $doctorId = $doctor['doctor_id'];
@@ -67,7 +69,7 @@ $appointmentCount = $stmt->fetchColumn();
                 <div class="card-body">
                     <h6>Pending Appointments</h6>
                     <p class="text-muted small">Need your response</p>
-                    <a href="<?= BASE_URL ?>/doctor/appointments.php"
+                    <a href="../doctor/appointments.php"
                     class="btn btn-sm btn-primary">
                     Review
                     </a>
@@ -80,7 +82,7 @@ $appointmentCount = $stmt->fetchColumn();
                 <div class="card-body">
                     <h6>Set Availability</h6>
                     <p class="text-muted small">Manage schedule</p>
-                    <a href="<?= BASE_URL ?>/doctor/availability.php"
+                    <a href="../doctor/availability.php"
                     class="btn btn-sm btn-outline-primary">
                     Update
                     </a>

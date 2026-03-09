@@ -46,7 +46,7 @@
                         <a class="nav-link" href="../patient/dashboard.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../patient/book_appointment.php">
+                        <a class="nav-link" href="../patient/book.php">
                             Book
                         </a>
                     </li>
@@ -58,7 +58,7 @@
                 <?php endif; ?>
 
                 <li class="nav-item ms-lg-3">
-                    <a href="<?= BASE_URL ?>/auth/logout.php"
+                    <a href="../auth/logout.php"
                        class="btn btn-sm btn-danger px-3">
                         Logout
                     </a>
