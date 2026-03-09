@@ -6,9 +6,7 @@ require_once __DIR__ . '/../logic/appointment_logic.php';
 
 requireRole(ROLE_PATIENT);
 
-/* ---------------------------
-   Get patient ID
----------------------------- */
+//    Get patient ID
 $stmt = $pdo->prepare("
     SELECT patient_id 
     FROM patients 
@@ -23,9 +21,8 @@ if (!$patient) {
 
 $patientId = $patient['patient_id'];
 
-/* ---------------------------
-   Fetch approved doctors
----------------------------- */
+
+//    Fetch approved doctors
 $stmt = $pdo->prepare("
     SELECT doctor_id, full_name, specialization
     FROM doctors
@@ -35,9 +32,7 @@ $stmt = $pdo->prepare("
 $stmt->execute([':status' => DOCTOR_APPROVED]);
 $doctors = $stmt->fetchAll();
 
-/* ---------------------------
-   Fetch availability (if doctor selected)
----------------------------- */
+//    Fetch availability (if doctor selected)
 $availability = [];
 
 if (!empty($_POST['doctor_id'])) {
@@ -55,9 +50,9 @@ if (!empty($_POST['doctor_id'])) {
     $availability = $stmt->fetchAll();
 }
 
-/* ---------------------------
-   Handle booking
----------------------------- */
+
+//    Handle booking
+
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['appointment_date'])) {

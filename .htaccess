@@ -1,16 +1,16 @@
-RewriteEngine On
+# RewriteEngine On
 
-# Default index file
-DirectoryIndex index.php
+# # Default index file
+# DirectoryIndex index.php
 
-# Block direct access to sensitive folders
-RewriteRule ^(config|logic)/ - [F,L]
+# # Block direct access to sensitive folders
+# RewriteRule ^(config|logic)/ - [F,L]
 
-# Allow existing files and directories
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
+# # Allow existing files and directories
+# RewriteCond %{REQUEST_FILENAME} -f [OR]
+# RewriteCond %{REQUEST_FILENAME} -d
+# RewriteRule ^ - [L]
 
-# Route everything else through index.php
-RewriteRule ^ index.php [L]
+# # Route everything else through index.php
+# RewriteRule ^ index.php [L]
 

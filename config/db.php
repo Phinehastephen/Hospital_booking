@@ -1,22 +1,21 @@
 <?php
-$host = getenv('MYSQL_ADDON_HOST');
-$db   = getenv('MYSQL_ADDON_DB');
-$user = getenv('MYSQL_ADDON_USER');
-$pass = getenv('MYSQL_ADDON_PASSWORD');
-$port = getenv('MYSQL_ADDON_PORT') ?: 3306;
 
-$dsn = "mysql:host=$host;port=$port;dbname=$db;charset=utf8mb4";
-
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
+$host = "localhost";
+$dbname = "marv_hospital";
+$username = "root";
+$password = ""; 
 
 try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+    
+    // Set error mode to exception
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    // Set default fetch mode
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
-    die("Database connection failed.");
+    die("Database Connection Failed: " . $e->getMessage());
 }
 
 ?>

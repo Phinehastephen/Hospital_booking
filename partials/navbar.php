@@ -3,7 +3,7 @@
 <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center gap-2"
-           href="<?= BASE_URL ?>/index.php">
+           href="../index.php">
             <span class="logo-icon">🏥</span>
             <span class="logo-text">Marv</span>
         </a>
@@ -19,39 +19,39 @@
 
                 <?php if ($_SESSION['role'] === ROLE_ADMIN): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL ?>/admin/dashboard.php">Dashboard</a>
+                        <a class="nav-link" href="../admin/dashboard.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL ?>/admin/doctors.php">Doctors</a>
+                        <a class="nav-link" href="../admin/doctors.php">Doctors</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL ?>/admin/appointments.php">Appointments</a>
+                        <a class="nav-link" href="../admin/appointments.php">Appointments</a>
                     </li>
                 <?php endif; ?>
 
                 <?php if ($_SESSION['role'] === ROLE_DOCTOR): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL ?>/doctor/dashboard.php">Dashboard</a>
+                        <a class="nav-link" href="../doctor/dashboard.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL ?>/doctor/availability.php">Availability</a>
+                        <a class="nav-link" href="../doctor/availability.php">Availability</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL ?>/doctor/appointments.php">Appointments</a>
+                        <a class="nav-link" href="../doctor/appointments.php">Appointments</a>
                     </li>
                 <?php endif; ?>
 
                 <?php if ($_SESSION['role'] === ROLE_PATIENT): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL ?>/patient/dashboard.php">Dashboard</a>
+                        <a class="nav-link" href="../patient/dashboard.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL ?>/patient/book_appointment.php">
+                        <a class="nav-link" href="../patient/book_appointment.php">
                             Book
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL ?>/patient/my_appointments.php">
+                        <a class="nav-link" href="../patient/my_appointments.php">
                             My Appointments
                         </a>
                     </li>
