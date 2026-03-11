@@ -1,5 +1,7 @@
 <?php session_start(); ?>
 
+<?php include __DIR__ . '/../partials/header.php'; ?>
+
 <h4>Available Doctors Matching Your Symptoms</h4>
 
 <?php foreach ($_SESSION['matched_doctors'] as $doctor): ?>

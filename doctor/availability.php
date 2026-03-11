@@ -6,9 +6,8 @@ require_once __DIR__ . '/../logic/availability_logic.php';
 
 requireRole(ROLE_DOCTOR);
 
-/* ---------------------------
-   Get doctor ID
----------------------------- */
+
+//    Get doctor ID
 $stmt = $pdo->prepare("
     SELECT doctor_id 
     FROM doctors 
@@ -23,9 +22,8 @@ if (!$doctor) {
 
 $doctorId = $doctor['doctor_id'];
 
-/* ---------------------------
-   Handle add availability
----------------------------- */
+
+//    Handle add availability
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['day'])) {
@@ -41,9 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['day'])) {
         : $result;
 }
 
-/* ---------------------------
-   Handle delete availability
----------------------------- */
+//    Handle delete availability
+
 if (isset($_GET['delete'])) {
     $stmt = $pdo->prepare("
         DELETE FROM doctor_availability
@@ -59,9 +56,8 @@ if (isset($_GET['delete'])) {
     exit;
 }
 
-/* ---------------------------
-   Fetch availability
----------------------------- */
+//    Fetch availability
+
 $availability = getDoctorAvailability($doctorId);
 ?>
 

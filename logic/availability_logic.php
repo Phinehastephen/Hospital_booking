@@ -2,9 +2,8 @@
 require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../config/constants.php';
 
-/**
- * Add doctor availability
- */
+//  Add doctor availability
+
 function addAvailability($doctorId, $day, $startTime, $endTime) {
     global $pdo;
 
@@ -40,9 +39,9 @@ function addAvailability($doctorId, $day, $startTime, $endTime) {
     return true;
 }
 
-/**
- * Fetch doctor availability
- */
+
+//  Fetch doctor availability
+
 function getDoctorAvailability($doctorId) {
     global $pdo;
 

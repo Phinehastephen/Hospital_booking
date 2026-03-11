@@ -41,7 +41,7 @@ $appointmentCount = $stmt->fetchColumn();
 
 <div class="container mt-4">
 
-    <h4 class="mb-4" style="padding-top: 40px;">Doctor Dashboard</h4>
+     <h4 class="mb-3" style="padding-top: 40px;">Welcome, Doctor <?= htmlspecialchars($doctor['full_name']) ?></h4>
 
     <!-- Status legend -->
     <div class="mb-3">

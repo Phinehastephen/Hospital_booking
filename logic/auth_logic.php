@@ -4,12 +4,14 @@ require_once __DIR__ . '/../config/constants.php';
 require_once __DIR__ . '/../config/session.php';
 
 
-//  * LOGIN FUNCTION
+//  LOGIN FUNCTION
 function loginUser($email, $password) {
+
     global $pdo;
 
     $sql = "SELECT * FROM users WHERE email = :email LIMIT 1";
     $stmt = $pdo->prepare($sql);
+
     $stmt->execute([
         ':email' => $email,
     ]);
@@ -24,7 +26,35 @@ function loginUser($email, $password) {
         return "Incorrect password.";
     }
 
-    // Set session variables
+
+    /* CHECK DOCTOR APPROVAL */
+
+    if ($user['role'] === 'doctor') {
+
+        $stmt = $pdo->prepare("
+            SELECT status
+            FROM doctors
+            WHERE user_id = :uid
+        ");
+
+        $stmt->execute([
+            ':uid' => $user['user_id']
+        ]);
+
+        $doctor = $stmt->fetch();
+
+        if (!$doctor) {
+            return "Doctor record not found.";
+        }
+
+        if ($doctor['status'] !== 'approved') {
+            return "Your account is yet to be approved.";
+        }
+    }
+
+
+    /* LOGIN SUCCESS */
+
     $_SESSION['user_id'] = $user['user_id'];
     $_SESSION['role'] = $user['role'];
 
@@ -32,10 +62,13 @@ function loginUser($email, $password) {
 }
 
 
-//  * LOGOUT FUNCTION
+
+//  LOGOUT FUNCTION
 function logoutUser() {
+
     session_unset();
     session_destroy();
+
     header("Location: ../auth/login.php");
     exit;
 }
