@@ -48,7 +48,7 @@ function loginUser($email, $password) {
         }
 
         if ($doctor['status'] !== 'approved') {
-            return "Your account is yet to be approved.";
+            return "Account rejected.";
         }
     }
 

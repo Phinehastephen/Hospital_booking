@@ -2,6 +2,8 @@
 session_start();
 
 require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../logic/mail_logic.php';
+require_once __DIR__ . '/../logic/notification_logic.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -62,6 +64,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 
+    // INSERT APPOINTMENT
+
     $stmt = $pdo->prepare("
         INSERT INTO appointments
         (doctor_id, patient_id, appointment_date, appointment_time, status)
@@ -74,6 +78,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $date,
         $time
     ]);
+
+
+    
+    //    GET PATIENT EMAIL
+
+    $stmt = $pdo->prepare("
+        SELECT email
+        FROM users
+        WHERE user_id = ?
+    ");
+
+    $stmt->execute([$_SESSION['user_id']]);
+
+    $user = $stmt->fetch();
+
+    $email = $user['email'];
+
+
+        //    GET DOCTOR INFO
+
+    $stmt = $pdo->prepare("
+        SELECT name, specialization, user_id
+        FROM doctors
+        WHERE doctor_id = ?
+    ");
+
+    $stmt->execute([$doctor_id]);
+
+    $doctor = $stmt->fetch();
+
+
+    //    SEND EMAIL
+
+    $message = "
+Hello,
+
+You have an appointment booked with
+Dr {$doctor['name']} ({$doctor['specialization']})
+
+Date: $date
+Time: $time
+";
+
+    sendMail(
+        $email,
+        "Appointment Booked",
+        $message
+    );
+
+
+    //    SEND WEBSITE NOTIFICATION TO DOCTOR
+
+    addNotification(
+        $doctor['user_id'],
+        "New appointment booked for $date at $time"
+    );
+
 
     $_SESSION['success'] = "Appointment booked successfully";
 
